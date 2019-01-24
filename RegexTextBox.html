@@ -41,6 +41,7 @@
     <script>
       
         var isDisabled = false;
+        var regex = "";        
       
         function updateDisabled(disabled) {
             isDisabled = disabled;
@@ -72,7 +73,7 @@
             
                 const textBox = document.querySelector('#text-box');
             
-                var email = new RegExp(element.config.regex.replace("\\\\", "\\"));
+                var email = new RegExp(regex);
 
                 if (email.test($(textBox).val())) {
                     $("#validationResult").text('Valid');
@@ -91,6 +92,7 @@
             try {
                 CustomElement.init((element, _context) => {
                   // Setup with initial value and disabled state
+                  regex = element.config.regex.replace("\\\\", "\\");
                   setupTextBox(element);   
                   updateDisabled(element.disabled);                  
                   updateSize();
