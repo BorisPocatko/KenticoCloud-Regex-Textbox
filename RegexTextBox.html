@@ -92,7 +92,7 @@
             try {
                 CustomElement.init((element, _context) => {
                   // Setup with initial value and disabled state
-                  regex = element.config.regex;//.replace("\\\\", "\\");
+                  regex = element.config.regex;
                   setupTextBox(element);   
                   updateDisabled(element.disabled);                  
                   updateSize();
