@@ -25,13 +25,16 @@
             height: 100%;
             opacity: 0;
         }
+        
+
     </style>
 </head>
 <body>
     <!-- Custom element HTML -->
     <div class="disabled_overlay"></div>
     <div class="text-box">
-       <input type="text" name="textBox" id="text-box">
+       <input type="text" name="textBox" size="50" id="text-box" onchange="checkRegex()"><br/>
+       Validation result: <p id="validationResult"></p>
     </div>
 
     <!-- Custom logic of the Custom element -->
@@ -49,24 +52,46 @@
             }
         }
       
-        function setupTextBox(savedValue) {
+        function setupTextBox(element) {
             const textBox = document.querySelector('#text-box');
 
-            if (!!savedValue) {
-                textBox.val(savedValue);                
+            if (!!element.value) {
+                textBox.val(element.value);                
+            } else if (!!element.config.default){
+                textBox.val(element.config.default); 
             }
         }
       
         function updateSize() {
             // Update the Custom element height in the Kentico Cloud UI            
-            CustomElement.setHeight(100);
+            CustomElement.setHeight(Math.ceil($("html").height()));
+        }
+        
+        function checkRegex(){
+            if (!isDisabled) {
+            
+                const textBox = document.querySelector('#text-box');
+            
+                var email = new RegExp(element.config.regex.replace("\\\\", "\\"););
+
+                if (email.test(textBox.val())) {
+                    $("#validationResult").text('Valid');
+                    // Send updated value to Kentico Cloud
+                    CustomElement.setValue('#' + color);
+                } else{
+                    $("#validationResult").text('Invalid');
+                }
+            
+            }
+          
+        
         }
       
         function initCustomElement() {
             try {
                 CustomElement.init((element, _context) => {
                   // Setup with initial value and disabled state
-                  setupTextBox(element.value);   
+                  setupTextBox(element);   
                   updateDisabled(element.disabled);                  
                   updateSize();
                 });
