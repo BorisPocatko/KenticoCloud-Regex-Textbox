@@ -77,7 +77,7 @@
                 if (email.test($(textBox).val())) {
                     $("#validationResult").text('Valid');
                     // Send updated value to Kentico Cloud
-                    CustomElement.setValue('#' + color);
+                    CustomElement.setValue($(textBox).val());
                 } else{
                     $("#validationResult").text('Invalid');
                 }
