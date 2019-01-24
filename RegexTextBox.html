@@ -56,9 +56,9 @@
             const textBox = document.querySelector('#text-box');
 
             if (!!element.value) {
-                textBox.val(element.value);                
+                $(textBox).val(element.value);                
             } else if (!!element.config.default){
-                textBox.val(element.config.default); 
+                $(textBox).val(element.config.default); 
             }
         }
       
@@ -74,7 +74,7 @@
             
                 var email = new RegExp(element.config.regex.replace("\\\\", "\\"));
 
-                if (email.test(textBox.val())) {
+                if (email.test($(textBox).val())) {
                     $("#validationResult").text('Valid');
                     // Send updated value to Kentico Cloud
                     CustomElement.setValue('#' + color);
