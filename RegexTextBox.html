@@ -66,7 +66,8 @@
             try {
                 CustomElement.init((element, _context) => {
                   // Setup with initial value and disabled state
-                  setupTextBox(element.value);                    
+                  setupTextBox(element.value);   
+                  updateDisabled(element.disabled);                  
                   updateSize();
                 });
                 // React when the disabled state changes (e.g. when publishing the item)
