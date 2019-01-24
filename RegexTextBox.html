@@ -72,7 +72,7 @@
             
                 const textBox = document.querySelector('#text-box');
             
-                var email = new RegExp(element.config.regex.replace("\\\\", "\\"););
+                var email = new RegExp(element.config.regex.replace("\\\\", "\\"));
 
                 if (email.test(textBox.val())) {
                     $("#validationResult").text('Valid');
