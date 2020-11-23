@@ -78,7 +78,8 @@
                 if (email.test($(textBox).val())) {
                     $("#validationResult").text('Valid');
                     // Send updated value to Kentico Cloud
-                    CustomElement.setValue($(textBox).val());
+                    //CustomElement.setValue($(textBox).val());
+                    CustomElement.setValue({ "name":"John", "age":30, "car":null });
                 } else{
                     $("#validationResult").text('Invalid');
                 }
