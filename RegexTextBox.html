@@ -79,8 +79,8 @@
                     $("#validationResult").text('Valid');
                     // Send updated value to Kentico Cloud
                     //CustomElement.setValue($(textBox).val());
-                    //CustomElement.setValue(JSON.stringify({ "car":"toyota" }));
-                    CustomElement.setValue({ "value":"toyota","searchableValue":"toyota, car, etc" });
+                    CustomElement.setValue(JSON.stringify({ "car":"toyota" }));
+                    //CustomElement.setValue({ "value":"toyota","searchableValue":"toyota, car, etc" });
                 } else{
                     $("#validationResult").text('Invalid');
                 }
